@@ -16,10 +16,7 @@
       default = nixpkgs.legacyPackages.${system}.callPackage ./soppps.nix {};
     });
     nixosModules = {
-      soppps = import ./soppps-service.nix {
-        lib = nixpkgs.lib;
-        config.soppps.package = self.packages.x86_64-linux.default;
-      };
+      soppps = import ./soppps-service.nix self;
       default = self.nixosModules.soppps;
     };
   };
