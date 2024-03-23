@@ -29,8 +29,7 @@ in {
   };
   config.soppps.configFile = builtins.toFile "config" (lib.concatStringsSep "\n" cfg.files);
   config.systemd.services.soppps = {
-    wantedBy = ["sysinit.target"];
-    after = ["sops-install-secrets.service"];
+    wantedBy = ["basic.target"];
 
     serviceConfig = {
       Type = "oneshot";
